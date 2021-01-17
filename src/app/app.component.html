@@ -1,10 +1,13 @@
 
 
-<div class="example-boundary">
-  <div class="example-box" cdkDragBoundary=".example-boundary" cdkDrag>
-    I can only be dragged within the dotted container
-  </div>
+<div class="example-boundary" #mainDiv >
 </div>
 
+<div class="example-box" 
+cdkDragBoundary=".example-boundary" cdkDrag
+(cdkDropListDropped)="drop($event)">
+  <img src="./assets/images/bookbase.jpg"  width="200px" height="180px"/>
+</div>
 
+<button type="button" (click)="changeBack()" (dropped)="onDrop($event)" >Arka planı değiştir </button>
 <router-outlet></router-outlet>
