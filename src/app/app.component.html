@@ -1,13 +1,43 @@
+<div style="background-image: url(../assets/images/booktint.png)!important;background-repeat: repeat-y;z-index: 99;">
+      <div cdkDropListGroup>
+            <div class="example-container">
+                  <h2>To do</h2>
 
+                  <div cdkDropList [cdkDropListData]="characters" class="example-list"
+                        (cdkDropListDropped)="drop($event)">
+                        <div class="example-box" *ngFor="let item of characters" cdkDrag>
+                              {{item.name}}
+                              <img src="{{item.url}}" height="50px" />
+                        </div>
+                  </div>
+            </div>
 
-<div class="example-boundary" #mainDiv >
+            <div class="example-container">
+                  <h2>Done</h2>
+
+                  <div cdkDropList [cdkDropListData]="selectedCharacter" class="example-list"
+                        (cdkDropListDropped)="drop($event)">
+                        <div class="example-box" *ngFor="let item of selectedCharacter" cdkDrag>
+                              {{item.name}}
+                              <img src="{{item.url}}" height="50px" />
+                        </div>
+                  </div>
+            </div>
+      </div>
+
+      <div class="example-boundary" #mainDiv cdkDropList (cdkDropListDropped)="drop($event)">
+
+      </div>
+
+      <div cdkDrag>
+            <img src="./assets/images/character2.png" height="150px" />
+      </div>
+      <div cdkDrag>
+            <img src="./assets/images/bg1.jpg" height="150px" />
+      </div>
 </div>
 
-<div class="example-box" 
-cdkDragBoundary=".example-boundary" cdkDrag
-(cdkDropListDropped)="drop($event)">
-  <img src="./assets/images/bookbase.jpg"  width="200px" height="180px"/>
-</div>
 
-<button type="button" (click)="changeBack()" (dropped)="onDrop($event)" >Arka planı değiştir </button>
+
+<button type="button" (click)="changeBack()">Arka planı değiştir </button>
 <router-outlet></router-outlet>
